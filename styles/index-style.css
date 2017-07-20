@@ -7,16 +7,27 @@
 }
 
 .terminal {
-    width: 100%;
-    height: 100%;
-}
-
-textarea {
     width: 99.5%;
     height: 500px;
     font-size: 25px;
-    resize: none;
+    overflow: auto;
     background-color: #ededed;
+}
+
+.terminal ul {
+    list-style-type: none;
+}
+
+.terminal:after {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+ul {
+    display: inline-block;
+    vertical-align: bottom;
 }
 
 .input-div {
