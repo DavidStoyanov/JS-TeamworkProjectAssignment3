@@ -1,8 +1,8 @@
 /*
  *   TODO:
  *   Use function write() to log the result on terminal.
- *   Each function will take as argument current list(final  string logged to the terminal) and commands.
- *   If there is an error should print it as write function.
+ *   Each function will take as argument current list and full command tokens.
+ *   If there is an error, should print it as write() function.
  *   After all, modified list should be returned at the end of the function.
  *
  *   For examples, look below
@@ -48,13 +48,16 @@ function count() {
 }
 
 function end(list, command) {
-    let newList = ['Finished'];
-    write(newList);
-    newList.length = 0;
-    $('.input').attr('readonly', true);
-    let button = $('.btn');
-    button.attr('disabled', true);
-    button.addClass('btnDisabled');
-    return newList;
+    if (command.length === 1) {
+        write('Finished');
+        $('.input').attr('readonly', true);
+        let button = $('.btn');
+        button.attr('disabled', true);
+        button.addClass('btnDisabled');
+    } else {
+        write('Error: end command should contains one argument!')
+    }
+
+    return list;
 }
 
