@@ -11,6 +11,7 @@ function listProcessing() {
         let input = $('.input');
         if (input.val().trim() !== '') {
             list = input.val().split(/\s+/g);
+            write(list.join(' '));
             isInitialized = true
         }
         input.val('');
