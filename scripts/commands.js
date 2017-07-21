@@ -27,8 +27,16 @@ function reverse() {
     //TODO...
 }
 
-function insert() {
+function insert(list, command) {
     //TODO...
+        if (command[1] >= 0 && command[1] < list.length) {
+            list.splice(command[1], 0, command[2]);
+            write(list.join(' '));
+        } else {
+            write(`Error: invalid index ${command[1]}`)
+        }
+
+        return list;
 }
 
 function deleteItem() {
