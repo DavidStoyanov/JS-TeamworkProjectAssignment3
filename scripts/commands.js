@@ -28,7 +28,6 @@ function reverse() {
 }
 
 function insert(list, command) {
-    //TODO...
         if (command[1] >= 0 && command[1] < list.length) {
             list.splice(command[1], 0, command[2]);
             write(list.join(' '));
@@ -51,10 +50,23 @@ function sort() {
     //TODO...
 }
 
-function count() {
-    //TODO...
+function count(list, command) {
+    let counter = 0;
+    if (command.length === 2 && command[1] !== '') {
+        for (let i = 0; i <= list.length; i++) {
+            if (list[i] === command[1]) {
+                counter++;
+            }
+        }
+        if (counter === 0) {
+            write('String not found')
+        }
+        else {
+            write(Number(counter));
+        }
+        return list;
+    }
 }
-
 function end(list, command) {
     if (command.length === 1) {
         write('Finished');
