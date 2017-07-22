@@ -13,14 +13,21 @@ function append(list, command) {
         list.push(command[1]);
         write(list.join(' '));
     } else {
-        write('Error: append command should contains two arguments!')
+        write('Error: append command should contains two parameters!')
     }
 
     return list;
 }
 
-function prepend() {
-    //TODO...
+function prepend(list, command) {
+    if (command.length === 2 && command[1] !== '') {
+        list.splice(0,0, command[1]);
+        write(list.join(' '));
+    } else {
+        write('Error: prepend command should contains two parameters!')
+    }
+
+    return list;
 }
 
 function reverse() {
@@ -57,13 +64,14 @@ function roll(list, command) {
         if (command[1] === 'left') {
             let el = list.shift();
             list.push(el);
+            write(list.join(' '));
         } else if (command[1] === 'right') {
             let el2 = list.pop();
             list.unshift(el2);
+            write(list.join(' '));
         } else {
             write(`Error: invalid command parameters`)
         }
-        write(list.join(' '));
     } else {
         write(`Error: invalid command parameters`)
     }
@@ -82,14 +90,11 @@ function count(list, command) {
                 counter++;
             }
         }
-        if (counter === 0) {
-            write('String not found')
-        }
-        else {
-            write(Number(counter));
-        }
-        return list;
+
+        write(counter);
     }
+
+    return list;
 }
 
 function end(list, command) {
@@ -100,7 +105,7 @@ function end(list, command) {
         button.attr('disabled', true);
         button.addClass('btnDisabled');
     } else {
-        write('Error: end command should contains one argument!')
+        write('Error: invalid command parameters')
     }
 
     return list;
