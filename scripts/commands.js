@@ -13,38 +13,88 @@ function append(list, command) {
         list.push(command[1]);
         write(list.join(' '));
     } else {
-        write('Error: append command should contains two arguments!')
+        write('Error: append command should contains two parameters!')
     }
 
     return list;
 }
 
-function prepend() {
-    //TODO...
+function prepend(list, command) {
+    if (command.length === 2 && command[1] !== '') {
+        list.splice(0,0, command[1]);
+        write(list.join(' '));
+    } else {
+        write('Error: prepend command should contains two parameters!')
+    }
+
+    return list;
 }
 
 function reverse() {
     //TODO...
 }
 
-function insert() {
-    //TODO...
+function insert(list, command) {
+    if (command[1] >= 0 && command[1] < list.length) {
+        list.splice(command[1], 0, command[2]);
+        write(list.join(' '));
+    } else {
+        write(`Error: invalid index ${command[1]}`)
+    }
+
+    return list;
 }
 
-function deleteItem() {
-    //TODO...
+function deleteItem(list, command) {
+    if (!isNaN(command[1]) && command[1] !== null) {
+        if (command[1] >= 0 && command[1] < list.length) {
+            list.splice(command[1], 1);
+            write(list.join(' '));
+        } else {
+            write(`Error: invalid index ${command[1]}`)
+        }
+    } else {
+        write(`Error: invalid command parameters`)
+    }
+    return list;
 }
 
-function roll() {
-    //TODO: Roll Left, Roll Right...
+function roll(list, command) {
+    if (command.length === 2 && command[1] !== '') {
+        if (command[1] === 'left') {
+            let el = list.shift();
+            list.push(el);
+            write(list.join(' '));
+        } else if (command[1] === 'right') {
+            let el2 = list.pop();
+            list.unshift(el2);
+            write(list.join(' '));
+        } else {
+            write(`Error: invalid command parameters`)
+        }
+    } else {
+        write(`Error: invalid command parameters`)
+    }
+    return list;
 }
 
 function sort() {
     //TODO...
 }
 
-function count() {
-    //TODO...
+function count(list, command) {
+    let counter = 0;
+    if (command.length === 2 && command[1] !== '') {
+        for (let i = 0; i <= list.length; i++) {
+            if (list[i] === command[1]) {
+                counter++;
+            }
+        }
+
+        write(counter);
+    }
+
+    return list;
 }
 
 function end(list, command) {
@@ -55,7 +105,7 @@ function end(list, command) {
         button.attr('disabled', true);
         button.addClass('btnDisabled');
     } else {
-        write('Error: end command should contains one argument!')
+        write('Error: invalid command parameters')
     }
 
     return list;
