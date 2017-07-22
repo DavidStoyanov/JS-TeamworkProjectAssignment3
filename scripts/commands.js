@@ -28,22 +28,46 @@ function reverse() {
 }
 
 function insert(list, command) {
+    if (command[1] >= 0 && command[1] < list.length) {
+        list.splice(command[1], 0, command[2]);
+        write(list.join(' '));
+    } else {
+        write(`Error: invalid index ${command[1]}`)
+    }
+
+    return list;
+}
+
+function deleteItem(list, command) {
+    if (!isNaN(command[1]) && command[1] !== null) {
         if (command[1] >= 0 && command[1] < list.length) {
-            list.splice(command[1], 0, command[2]);
+            list.splice(command[1], 1);
             write(list.join(' '));
         } else {
             write(`Error: invalid index ${command[1]}`)
         }
-
-        return list;
+    } else {
+        write(`Error: invalid command parameters`)
+    }
+    return list;
 }
 
-function deleteItem() {
-    //TODO...
-}
-
-function roll() {
-    //TODO: Roll Left, Roll Right...
+function roll(list, command) {
+    if (command.length === 2 && command[1] !== '') {
+        if (command[1] === 'left') {
+            let el = list.shift();
+            list.push(el);
+        } else if (command[1] === 'right') {
+            let el2 = list.pop();
+            list.unshift(el2);
+        } else {
+            write(`Error: invalid command parameters`)
+        }
+        write(list.join(' '));
+    } else {
+        write(`Error: invalid command parameters`)
+    }
+    return list;
 }
 
 function sort() {
@@ -67,6 +91,7 @@ function count(list, command) {
         return list;
     }
 }
+
 function end(list, command) {
     if (command.length === 1) {
         write('Finished');

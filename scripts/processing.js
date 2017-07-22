@@ -37,7 +37,7 @@ function listProcessing() {
                 list = reverse(list, tokens); break;
             case 'insert':
                 list = insert(list, tokens); break;
-            case 'deleteItem':
+            case 'delete':
                 list = deleteItem(list, tokens); break;
             case 'roll':
                 list = roll(list, tokens); break;
