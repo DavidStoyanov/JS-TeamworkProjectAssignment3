@@ -30,8 +30,15 @@ function prepend(list, command) {
     return list;
 }
 
-function reverse() {
-    //TODO...
+function reverse(list,command) {
+
+    if (command.length > 0 && list.length > 1) {
+        list.reverse();
+        write(list.join(' '));
+    } else {
+        write( 'Error: text must contain at least 2 words');
+    }
+    return list;
 }
 
 function insert(list, command) {
@@ -78,8 +85,15 @@ function roll(list, command) {
     return list;
 }
 
-function sort() {
-    //TODO...
+function sort(list, command) {
+    if (command.length > 0 && list.length > 1) {
+        list.sort();
+        write(list.join(' '));
+    } else {
+        write( 'Error: text must contain at least 2 words');
+    }
+
+    return list;
 }
 
 function count(list, command) {
